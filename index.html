@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copertec System - Test Suite</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #059669 0%, #047857 50%, #1d4ed8 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 24px;
+        }
+        h1 {
+            color: #059669;
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+        .version {
+            display: inline-block;
+            background: #059669;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 12px;
+        }
+        .btn-main {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #059669, #1d4ed8);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 16px;
+        }
+        .btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4);
+        }
+        h2 {
+            color: #374151;
+            font-size: 1.2rem;
+            margin: 24px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .test-list {
+            list-style: none;
+        }
+        .test-list li {
+            padding: 12px 16px;
+            background: #f9fafb;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border-left: 4px solid #059669;
+        }
+        .test-list li strong {
+            color: #059669;
+        }
+        .test-list li code {
+            background: #e5e7eb;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+        .note {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 16px;
+            font-size: 0.9rem;
+        }
+        .footer {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            margin-top: 24px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>COPERTEC SYSTEM <span class="version">v3.3</span></h1>
+            <p class="subtitle">Configuratore Reti Anticaduta Certificate CNR A.T. 650/25</p>
+            
+            <a href="copertec-configuratore-v3.3.html" class="btn-main">
+                🚀 Apri Configuratore
+            </a>
+            
+            <h2>📋 Casi di Test Validazione</h2>
+            <ul class="test-list">
+                <li>
+                    <strong>TEST 1 - Schema A2 (Giuntato)</strong><br>
+                    265 lucernari × L=26.258m × H.152cm<br>
+                    Risultato atteso: <code>1590 rotoli</code> (265 × 3 rotoli × 2 affiancati)
+                </li>
+                <li>
+                    <strong>TEST 2 - Schema A (Non Giuntato)</strong><br>
+                    100 lucernari × L=20m × H.152cm<br>
+                    Risultato atteso: <code>100 rotoli</code> (1 rotolo × 100)
+                </li>
+                <li>
+                    <strong>TEST 3 - Schema A (Non Giuntato, Lungo)</strong><br>
+                    10 lucernari × L=60m × H.183cm<br>
+                    Risultato atteso: <code>30 rotoli</code> (3 rotoli × 10)
+                </li>
+                <li>
+                    <strong>TEST 4 - Mix Schemi</strong><br>
+                    50 × Schema A (L=25m, H.152) + 50 × Schema A2 (L=25m, H.152)<br>
+                    Risultato atteso: <code>150 rotoli</code> (50×1 + 50×1×2)
+                </li>
+                <li>
+                    <strong>TEST 5 - Ottimizzazione Sfridi</strong><br>
+                    10 lucernari × L=15m × H.152cm (modalità Equilibrata)<br>
+                    Verifica: avanzo 10m > 4m → dovrebbe riutilizzare
+                </li>
+            </ul>
+
+            <h2>✅ Checklist Validazione Completa</h2>
+            <ul class="test-list">
+                <li><strong>Encoding</strong> - Nessun carattere corrotto (ð, â, Ã, Â)</li>
+                <li><strong>Header</strong> - Gradient verde→blu, badge ITC-CNR + v3.3</li>
+                <li><strong>Export buttons</strong> - Solo in fondo, non in header</li>
+                <li><strong>Dettaglio Calcoli</strong> - Menu collapsibile (▶)</li>
+                <li><strong>Dettaglio Allocazioni</strong> - Menu collapsibile (▶)</li>
+                <li><strong>Riepilogo Sfridi</strong> - Rotoli = stesso valore BOM</li>
+                <li><strong>PDF Export</strong> - Si genera correttamente</li>
+                <li><strong>Excel Export</strong> - Si genera correttamente</li>
+                <li><strong>WhatsApp</strong> - Apre link con messaggio</li>
+                <li><strong>Email</strong> - Apre client email</li>
+            </ul>
+
+            <div class="note">
+                <strong>⚠️ Nota:</strong> Per testare PDF/Excel, il file deve essere servito da un web server (Replit) e non aperto direttamente come file locale.
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        Cavatorta SpA - Configuratori Prodotto © 2025
+    </div>
+</body>
+</html>

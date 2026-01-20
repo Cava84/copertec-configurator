@@ -1,0 +1,16 @@
+# Enforce UTF-8 encoding and LF line endings
+*.md text eol=lf encoding=UTF-8
+*.html text eol=lf encoding=UTF-8
+*.css text eol=lf encoding=UTF-8
+*.js text eol=lf encoding=UTF-8
+*.json text eol=lf encoding=UTF-8
+*.csv text eol=lf encoding=UTF-8
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
