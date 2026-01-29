@@ -1856,6 +1856,15 @@
     // Variabile globale per memorizzare i risultati dell'ottimizzazione
     let optimizationResults = null;
 
+    // Calcola il numero di giunzioni necessarie considerando l'overlap
+    // Formula corretta: il primo pezzo copre rollLength, ogni successivo copre (rollLength - overlap)
+    function calculateJunctionsRequired(effectiveLength, rollLength, overlap) {
+        if (effectiveLength <= rollLength) return 0;
+        const remaining = effectiveLength - rollLength;
+        const effectiveRollWithOverlap = rollLength - overlap;
+        return Math.ceil(remaining / effectiveRollWithOverlap);
+    }
+
     // Calcola la sovrapposizione richiesta per giunzioni longitudinali
     function getOverlapForJunction(schema, hRete) {
         // Schemi A1, B1, C1, A2, B2, C2, D2, E2: sempre 100cm
@@ -2311,7 +2320,7 @@
             const overlap = s.overlapRequired;
             
             // Se richiede più di 1 giunzione, usa rotoli dedicati
-            const junctionsNeeded = Math.ceil(s.effectiveLength / rollLength) - 1;
+            const junctionsNeeded = calculateJunctionsRequired(s.effectiveLength, rollLength, overlap);
             
             if (junctionsNeeded > maxJunctions) {
                 // Rotoli dedicati senza ottimizzazione
@@ -2349,8 +2358,7 @@
                 let bestRemaining = Infinity;
                 
                 for (let roll of group.rolls) {
-                    const hasJunction = roll.allocations.some(a => a.isJunction);
-                    if (!hasJunction && roll.remaining >= s.effectiveLength && roll.remaining >= minRemnant) {
+                    if (roll.remaining >= s.effectiveLength && roll.remaining >= minRemnant) {
                         if (roll.remaining < bestRemaining) {
                             bestRoll = roll;
                             bestRemaining = roll.remaining;
