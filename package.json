@@ -1,0 +1,13 @@
+{
+  "name": "copertec-configurator-logic",
+  "version": "1.0.0",
+  "description": "Logiche di calcolo estratte dal configuratore Copertec v3.3",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "vitest": "^3.0.0"
+  }
+}
