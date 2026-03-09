@@ -12,9 +12,9 @@ Input:
 - Altezza rete: 152 cm
 
 Atteso:
-- BOM Reti: 1590 rotoli
-- Riepilogo: 1590 rotoli
-- Calcolo: 265 x 3 x 2 = 1590
+- BOM Reti: 1060 rotoli
+- Riepilogo: 1060 rotoli
+- Calcolo: 265 x 2 x 2 = 1060
 ```
 
 ### Schema A Non Giuntato
