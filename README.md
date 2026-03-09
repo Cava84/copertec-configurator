@@ -60,7 +60,7 @@ copertec-system-v3.3/
 
 ```
 Input: Schema A2, 265 lucernari, L=26.258m, H.152cm
-Atteso: 1590 rotoli (265 x 3 x 2)
+Atteso: 1060 rotoli (265 x 2 x 2)
 ```
 
 ## Changelog v3.3
